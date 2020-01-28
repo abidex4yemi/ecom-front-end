@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
@@ -6,7 +7,7 @@ import { fetchProducts } from '../state/actions';
 import Product from '../components/Products/Product';
 import { GlobalStyles } from './GlobalStyles';
 
-const ProductsPage = props => {
+const ProductsPage = (props) => {
   useEffect(() => {
     props.fetchProducts();
   }, []);
@@ -15,7 +16,7 @@ const ProductsPage = props => {
     if (props.data.fetchingProducts) {
       return <div>Loading products...</div>;
     } else {
-      return props.data.products.map(product => (
+      return props.data.products.map((product) => (
         <Product key={product._id} productDetails={product} />
       ));
     }
@@ -38,7 +39,7 @@ const ProductsPage = props => {
   );
 };
 
-const mapSateToProps = state => state;
+const mapSateToProps = (state) => state;
 
 export default connect(mapSateToProps, { fetchProducts })(ProductsPage);
 

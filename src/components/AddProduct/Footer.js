@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Footer = props => {
+const Footer = (props) => {
   const { handleSaveNewProduct } = props;
 
   return (

@@ -12,7 +12,7 @@ export const fetchProducts = () => (dispatch, getState, api) => {
 
   return api
     .get('/products')
-    .then(res => {
+    .then((res) => {
       dispatch({
         type: FETCHING_PRODUCTS,
         payload: { fetchingProduct: false }
@@ -25,10 +25,10 @@ export const fetchProducts = () => (dispatch, getState, api) => {
 
       return res;
     })
-    .catch(err => err);
+    .catch((err) => err);
 };
 
-export const addProduct = product => (dispatch, getState, api) => {
+export const addProduct = (product) => (dispatch, getState, api) => {
   dispatch({
     type: ADDING_PRODUCT,
     payload: { addingProduct: true }
@@ -36,7 +36,7 @@ export const addProduct = product => (dispatch, getState, api) => {
 
   return api
     .post('/products', product)
-    .then(res => {
+    .then((res) => {
       dispatch({
         type: ADDING_PRODUCT,
         payload: { addingProduct: false }
@@ -51,13 +51,13 @@ export const addProduct = product => (dispatch, getState, api) => {
 
       return res;
     })
-    .catch(err => err);
+    .catch((err) => err);
 };
 
 export const fetchCategories = () => (dispatch, getState, api) => {
   return api
     .get('/categories')
-    .then(res => {
+    .then((res) => {
       dispatch({
         type: FETCH_CATEGORIES,
         payload: res.data.body.categories
@@ -65,5 +65,5 @@ export const fetchCategories = () => (dispatch, getState, api) => {
 
       return res;
     })
-    .catch(err => err);
+    .catch((err) => err);
 };

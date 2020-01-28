@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import CKEditor from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
-const Body = props => {
+const Body = (props) => {
   const {
     handleProductTitleChange,
     handleProductAttributeChange,
@@ -17,7 +17,7 @@ const Body = props => {
   const renderCategories = () => {
     return (
       <select onChange={handleProductCategoryChange}>
-        {categories.map(category => (
+        {categories.map((category) => (
           <option value={category._id} key={category._id}>
             {category.name}
           </option>
@@ -41,7 +41,7 @@ const Body = props => {
             <span></span>
           </label>
 
-          <img src={newProductDetails.attributes.imageUrl} />
+          <img src={newProductDetails.attributes.imageUrl} alt="" />
         </ImageStyled>
 
         <div>

@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import ReactHtmlParser from 'react-html-parser';
 
-const ProductPreview = props => {
+const ProductPreview = (props) => {
   const { name, description, attributes } = props.newProductDetails;
   const { imageUrl, sizes, price } = attributes;
 
@@ -11,7 +11,7 @@ const ProductPreview = props => {
       <StyledProductSizes>
         <p>Select size</p>
         <ul>
-          {sizes.map(size => (
+          {sizes.map((size) => (
             <li key={size}>{size}</li>
           ))}
         </ul>
@@ -24,7 +24,7 @@ const ProductPreview = props => {
       <>
         {' '}
         <StyledImageContainer>
-          <img src={imageUrl} />
+          <img src={imageUrl} alt="" />
         </StyledImageContainer>
         <StyledProductDetails>
           <h3>{name}</h3>

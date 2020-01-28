@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
@@ -10,7 +11,7 @@ import Body from '../components/AddProduct/Body';
 import Footer from '../components/AddProduct/Footer';
 import ProductPreview from '../components/AddProduct/ProductPreview';
 
-const AddProduct = props => {
+const AddProduct = (props) => {
   useEffect(() => {
     props.fetchCategories();
   }, []);
@@ -27,7 +28,7 @@ const AddProduct = props => {
     categoryId: '5e2de29e1c9d44000041a4ca'
   });
 
-  const handleImageUpload = async evt => {
+  const handleImageUpload = async (evt) => {
     // Not so good way of validation(test mode)
     if (evt.target.files[0].size > 307200) {
       alert('File is too big!');
@@ -40,8 +41,8 @@ const AddProduct = props => {
 
     await axios
       .post(CLOUDINARY_URL, imageFile)
-      .then(res => {
-        setNewProductDetails(prevState => ({
+      .then((res) => {
+        setNewProductDetails((prevState) => ({
           ...prevState,
           attributes: {
             ...prevState.attributes,
@@ -49,31 +50,31 @@ const AddProduct = props => {
           }
         }));
       })
-      .catch(err => err);
+      .catch((err) => err);
   };
 
-  const handleProductTitleChange = evt => {
+  const handleProductTitleChange = (evt) => {
     const { name, value } = evt.target;
 
-    setNewProductDetails(prevState => ({
+    setNewProductDetails((prevState) => ({
       ...prevState,
       [name]: value
     }));
   };
 
-  const handleProductCategoryChange = evt => {
+  const handleProductCategoryChange = (evt) => {
     const { value } = evt.target;
 
-    setNewProductDetails(prevState => ({
+    setNewProductDetails((prevState) => ({
       ...prevState,
       categoryId: value
     }));
   };
 
-  const handleProductAttributeChange = evt => {
+  const handleProductAttributeChange = (evt) => {
     const { name, value } = evt.target;
 
-    setNewProductDetails(prevState => ({
+    setNewProductDetails((prevState) => ({
       ...prevState,
       attributes: {
         ...prevState.attributes,
@@ -85,13 +86,13 @@ const AddProduct = props => {
   const handleTextAreaInputChange = (event, editor) => {
     const data = editor.getData();
 
-    setNewProductDetails(prevState => ({
+    setNewProductDetails((prevState) => ({
       ...prevState,
       description: data
     }));
   };
   // Save new product
-  const handleSaveNewProduct = evt => {
+  const handleSaveNewProduct = (evt) => {
     const price = { price: parseFloat(newProductDetails.attributes.price) };
 
     const newProduct = {
@@ -104,7 +105,7 @@ const AddProduct = props => {
       ]
     };
 
-    props.addProduct(newProduct).then(res => {
+    props.addProduct(newProduct).then((res) => {
       if (res.status === 201) {
         props.history.push('/');
       }
@@ -138,7 +139,7 @@ const AddProduct = props => {
   );
 };
 
-const mapSateToProps = state => state;
+const mapSateToProps = (state) => state;
 
 export default connect(mapSateToProps, { addProduct, fetchCategories })(
   AddProduct

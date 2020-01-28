@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-const Product = props => {
+const Product = (props) => {
   const { name, attributes, _id } = props.productDetails;
   const { imageUrl } = attributes[0];
 
